@@ -118,3 +118,10 @@ footer {
   text-shadow: 0 0 10px #00ffe0;
   margin-bottom: 1rem;
 }
+.banner img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-bottom: 2px solid #00ffe0;
+  box-shadow: 0 0 20px #00ffe0;
+}
