@@ -39,37 +39,44 @@ $ node mi-script.js
     Hecho con 🧠 por [Tu Nombre] — Powered by GitHub Pages
   </footer>
   <script>
-  const texts = [
-    "Iniciando protocolo de red...",
-    "Compilando código estelar...",
-    "Conectando al núcleo principal...",
-    "Bienvenido a mi universo digital"
-  ];
-
-  let index = 0;
-  let charIndex = 0;
   const target = document.querySelector(".terminal-type");
+  let frases = [];
 
-  function typeEffect() {
-    if (!target) return;
-
-    if (charIndex < texts[index].length) {
-      target.textContent += texts[index][charIndex];
-      charIndex++;
-      setTimeout(typeEffect, 50);
+  const escribir = (texto, i = 0) => {
+    if (i < texto.length) {
+      target.textContent += texto[i];
+      reproducirSonido();
+      setTimeout(() => escribir(texto, i + 1), 50);
     } else {
       setTimeout(() => {
         target.textContent = "";
-        charIndex = 0;
-        index = (index + 1) % texts.length;
-        typeEffect();
+        mostrarFrase();
       }, 2000);
     }
-  }
-
-  window.onload = () => {
-    typeEffect();
   };
-  </script>
+
+  const mostrarFrase = () => {
+    if (frases.length > 0) {
+      const frase = frases[Math.floor(Math.random() * frases.length)];
+      escribir(frase);
+    }
+  };
+
+  const reproducirSonido = () => {
+    const beep = new Audio("tecla.mp3");
+    beep.volume = 0.05;
+    beep.play();
+  };
+
+  fetch("frases.json")
+    .then((res) => res.json())
+    .then((data) => {
+      frases = data;
+      mostrarFrase();
+    })
+    .catch((err) => {
+      console.error("Error al cargar frases:", err);
+    });
+</script>
 </body>
 </html>
