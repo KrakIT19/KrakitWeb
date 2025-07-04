@@ -9,7 +9,7 @@
 <body>
   <header>
     <img src="logo_html.png" alt="Mi logo" class="logo">
-    <h1 class="terminal-type">Bienvenido a mi universo digital</h1>
+    <h1 class="terminal-type"></h1>
     <p>Explora mi mundo geek, robótico y conectado.</p>
   </header>
 
@@ -38,5 +38,38 @@ $ node mi-script.js
   <footer>
     Hecho con 🧠 por [Tu Nombre] — Powered by GitHub Pages
   </footer>
+  <script>
+  const texts = [
+    "Iniciando protocolo de red...",
+    "Compilando código estelar...",
+    "Conectando al núcleo principal...",
+    "Bienvenido a mi universo digital"
+  ];
+
+  let index = 0;
+  let charIndex = 0;
+  const target = document.querySelector(".terminal-type");
+
+  function typeEffect() {
+    if (!target) return;
+
+    if (charIndex < texts[index].length) {
+      target.textContent += texts[index][charIndex];
+      charIndex++;
+      setTimeout(typeEffect, 50);
+    } else {
+      setTimeout(() => {
+        target.textContent = "";
+        charIndex = 0;
+        index = (index + 1) % texts.length;
+        typeEffect();
+      }, 2000);
+    }
+  }
+
+  window.onload = () => {
+    typeEffect();
+  };
+  </script>
 </body>
 </html>
