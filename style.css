@@ -99,3 +99,15 @@ footer {
   padding-top: 1rem;
   text-align: center;
 }
+.terminal-type {
+  font-size: 2rem;
+  color: #00ffe0;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #00ffe0;
+  width: 100%;
+  max-width: 100%;
+  min-height: 2.5rem;
+  text-shadow: 0 0 10px #00ffe0;
+  margin-bottom: 1rem;
+}
