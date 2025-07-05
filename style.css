@@ -142,3 +142,24 @@ footer {
   border-bottom: 2px solid #00ffe0;
   box-shadow: 0 0 20px #00ffe0;
 }
+
+.floating-img {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  max-width: 90%;
+  z-index: 100;
+  border: 2px solid #00ffe0;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #00ffe0aa;
+  filter: brightness(110%) contrast(120%) saturate(130%);
+  backdrop-filter: blur(2px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.floating-img:hover {
+  transform: translateY(-50%) scale(1.05) rotate(2deg);
+  box-shadow: 0 0 30px #00ffe0;
+}
