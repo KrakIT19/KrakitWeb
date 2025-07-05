@@ -145,10 +145,10 @@ footer {
 
 .floating-img {
   position: fixed;
-  right: 35px;          /* Alinea bien a la derecha */
+  right: 50px;          /* Alinea bien a la derecha */
   top: 50%;
   transform: translateY(-50%);
-  width: 250px;
+  width: 333px;
   max-width: 25vw;
   z-index: 9999;         /* Muy alto para estar al frente */
   border: 2px solid #00ffe0;
