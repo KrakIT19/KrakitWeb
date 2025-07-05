@@ -163,3 +163,9 @@ footer {
   transform: translateY(-50%) scale(1.05) rotate(2deg);
   box-shadow: 0 0 30px #00ffe0;
 }
+
+@media (max-width: 768px) {
+  .floating-img {
+    display: none;
+  }
+}
