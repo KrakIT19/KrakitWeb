@@ -900,7 +900,107 @@ nodes:
         slot: 7
         type: physical
   - boot_disk_size: null
-    configuration: []
+    configuration:
+      - name: iosxr_config.txt
+        content: |2-
+
+          Mon Jul 14 19:05:25.152 UTC
+          Building configuration...
+          !! IOS XR Configuration 7.1.1.09I
+          !! Last configuration change at Mon Jul 14 19:04:31 2025 by admin
+          !
+          hostname X-P3
+          group CCIE-ISIS
+           router isis '.*'
+            is-type level-2-only
+            log adjacency changes
+            address-family ipv4 unicast
+             metric-style wide
+             metric 200 level 2
+             mpls ldp auto-config
+            !
+            address-family ipv6 unicast
+             metric-style wide
+             metric 400 level 2
+             single-topology
+            !
+            interface 'Lo.*'
+             address-family ipv4 unicast
+             !
+             address-family ipv6 unicast
+             !
+            !
+            interface 'GigabitEthernet.*'
+             point-to-point
+             hello-padding disable
+             address-family ipv4 unicast
+             !
+             address-family ipv6 unicast
+             !
+            !
+           !
+          end-group
+          logging console debugging
+          interface Loopback0
+           description SIGNALLING-LOOPBACK
+           ipv4 address 1.0.100.5 255.255.255.255
+           ipv6 address 1:0:1000::5/128
+          !
+          interface MgmtEth0/0/CPU0/0
+           shutdown
+          !
+          interface GigabitEthernet0/0/0/0
+           description TO-X-PE6
+           ipv4 address 1.100.6.3 255.255.255.0
+           ipv6 address 1:1006::3/64
+          !
+          interface GigabitEthernet0/0/0/1
+           description TO-X-P1
+           ipv4 address 1.100.3.3 255.255.255.0
+           ipv6 address 1:1003::3/64
+          !
+          interface GigabitEthernet0/0/0/2
+           description TO-X-P4
+           ipv4 address 1.100.8.3 255.255.255.0
+           ipv6 address 1:1008::3/64
+          !
+          interface GigabitEthernet0/0/0/3
+           description TO-X-P2
+           ipv4 address 1.100.32.3 255.255.255.0
+           ipv6 address 1:1032::3/64
+          !
+          interface GigabitEthernet0/0/0/4
+           description TO-X-PE6
+           ipv4 address 1.100.6.3 255.255.255.0
+           ipv6 address 1:1006::3/64
+          !
+          interface GigabitEthernet0/0/0/5
+           shutdown
+          !
+          interface GigabitEthernet0/0/0/6
+           shutdown
+          !
+          router isis AGG1
+           apply-group CCIE-ISIS
+           net 49.0001.0001.0000.0100.0005.00
+           interface Loopback0
+           !
+           interface GigabitEthernet0/0/0/0
+           !
+          !
+          router isis CORE
+           apply-group CCIE-ISIS
+           net 49.0001.0001.0000.0100.0005.00
+           interface Loopback0
+           !
+           interface GigabitEthernet0/0/0/1
+           !
+           interface GigabitEthernet0/0/0/2
+           !
+           interface GigabitEthernet0/0/0/3
+           !
+          !
+          end
     cpu_limit: null
     cpus: null
     data_volume: null
